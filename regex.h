@@ -15,7 +15,7 @@ int matchhere(char *regexp, char *text);
 /**
  * matchstar - Matches wildcard or literal characters 0 or more times in a row.
  *
- * @param ing c - The literal character c.
+ * @param int c - The literal character c.
  * @param char* regexp - The regular expression pattern.
  * @param char* text - The text to search.
  */
