@@ -40,13 +40,47 @@ CU_ErrorCode matchStar(CU_pSuite pSuite)
 void test_basicEnd(void)
 {
     char *testText = "Hello World!";
-    char *regex = ".*!$";
+    char *regex = ".*d!$";
     CU_ASSERT(match(regex,testText) == 1);
 }
 
 CU_ErrorCode matchEnd(CU_pSuite pSuite)
 {
    if (NULL == CU_add_test(pSuite, "Basic End", test_basicEnd)) {
+       CU_cleanup_registry();
+       return CU_get_error();
+   }
+
+   return 0;
+}
+
+void test_basicStart(void)
+{
+    char *testText = "Hello World!";
+    char *regex = "^Hello";
+    CU_ASSERT(match(regex,testText) == 1);
+}
+
+CU_ErrorCode matchStart(CU_pSuite pSuite)
+{
+   if (NULL == CU_add_test(pSuite, "Basic Start", test_basicStart)) {
+       CU_cleanup_registry();
+       return CU_get_error();
+   }
+
+   return 0;
+}
+
+void test_specificDecimal(void)
+{
+    char *testText = "Hello World55";
+    char *regex = "\\d\\d$";
+    CU_ASSERT(match(regex,testText) == 1);
+}
+
+CU_ErrorCode matchDecimal(CU_pSuite pSuite)
+{
+   if (NULL == CU_add_test(pSuite, "Specific Decminal", test_specificDecimal)) {
        CU_cleanup_registry();
        return CU_get_error();
    }
@@ -80,6 +114,10 @@ int main() {
    err = matchStar(pSuite);
    if (err) return err;
    err = matchEnd(pSuite);
+   if (err) return err;
+   err = matchStart(pSuite);
+   if (err) return err;
+   err = matchDecimal(pSuite);
    if (err) return err;
 
    // Run the tests and show the run summary
