@@ -88,6 +88,23 @@ CU_ErrorCode matchDecimal(CU_pSuite pSuite)
    return 0;
 }
 
+void test_specificDecimalStar(void)
+{
+    char *testText = "Hello World55";
+    char *regex = "\\d*$";
+    CU_ASSERT(match(regex,testText) == 1);
+}
+
+CU_ErrorCode matchDecimalStar(CU_pSuite pSuite)
+{
+   if (NULL == CU_add_test(pSuite, "Specific Decminal w/Star", test_specificDecimalStar)) {
+       CU_cleanup_registry();
+       return CU_get_error();
+   }
+
+   return 0;
+}
+
 int main() {
     CU_ErrorCode err;
    // Initialize the CUnit test registry
@@ -118,6 +135,8 @@ int main() {
    err = matchStart(pSuite);
    if (err) return err;
    err = matchDecimal(pSuite);
+   if (err) return err;
+   err = matchDecimalStar(pSuite);
    if (err) return err;
 
    // Run the tests and show the run summary
