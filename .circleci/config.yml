@@ -1,13 +1,38 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
-version: 2.1
-# Use a package of configuration called an orb.
-orbs:
-  # Declare a dependency on the welcome-orb
-  welcome: circleci/welcome-orb@0.4.1
-# Orchestrate or schedule a set of jobs
+version: 2
+
 workflows:
-  # Name the workflow "welcome"
-  welcome:
-    # Run the welcome/run job in its own container
+  version: 2
+  dist-compile:
     jobs:
-      - welcome/run
+      - compile
+      - link:
+          requires: 
+            - compile
+
+
+jobs:
+
+  compile:
+    parallelism: 2
+    docker:
+      - image: gcc:8.2
+    steps:
+      - checkout
+      #split all c files based on the index ID we're running on, pass subset to gcc compile
+      - run: circleci tests glob "**/*.c" | circleci tests split --split-by=filesize | xargs gcc -c 
+      # move compiled files to specific folder and persist to workspace
+      - run: mkdir output && mv *.o output
+      - persist_to_workspace:
+          root: output
+          paths:
+            - "*.o"
+
+  link:
+    docker:
+      - image: gcc:8.2
+    steps:
+      # instead of checking out, restore workspace (will merge all parallel containers from previous job)
+      - attach_workspace:
+          at: output
+      - run: cd tests
+      - run: ls -la output
