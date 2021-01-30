@@ -13,4 +13,4 @@ jobs:
       - image: gcc:8.2
     steps:
       - checkout
-      - run: gcc -c regex.c && gcc -o test_regex driver.c && if ./test_regex |grep "Number.* 00"; then exit; else exit 1; fi
+      - run: gcc -c regex.c && gcc -o test_regex driver.c && if ./test_regex |grep "Number.* 42" && grep "Room.* beach"; then exit; else exit 1; fi
