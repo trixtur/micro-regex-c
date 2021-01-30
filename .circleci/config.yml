@@ -14,5 +14,5 @@ jobs:
     steps:
       - checkout
       - run: gcc -c regex.c && gcc -o test_regex driver.c && ./test_regex
-      - store_artifacts:
-          path: program
+      - store_test_results:
+          path: test-results
