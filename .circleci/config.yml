@@ -7,7 +7,6 @@ workflows:
       - compile
       
 jobs:
-
   compile:
     parallelism: 2
     docker:
@@ -15,6 +14,6 @@ jobs:
     steps:
       - checkout
       - persist_to_workspace:
-          root: output
+        root: output
       - run:
         command: ls -ahl
