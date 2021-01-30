@@ -13,6 +13,4 @@ jobs:
       - image: gcc:8.2
     steps:
       - checkout
-      - run: gcc -c regex.c && gcc -o test_regex driver.c && ./test_regex
-      - store_test_results:
-          path: test-results
+      - run: gcc -c regex.c && gcc -o test_regex driver.c && ./test_regex |grep "Number: 00"; then exit; else exit 1; fi
