@@ -13,8 +13,6 @@ jobs:
       - image: gcc:8.2
     steps:
       - checkout
-      - persist_to_workspace:
-          root: tests
       - run: pwd
       - run: ls -ahl
       - run: cd tests && make && make test
