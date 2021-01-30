@@ -15,5 +15,5 @@ jobs:
       - checkout
       - run: pwd
       - run: ls -ahl
-      - run: apt-get install cunit
+      - run: apt-get install libcunit1 libcunit1-dev
       - run: cd tests && make && make test
