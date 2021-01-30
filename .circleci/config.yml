@@ -14,5 +14,4 @@ jobs:
     steps:
       - checkout
       - run: cd tests
-      - run: make -f Makefile
-      - run: make -f Makefile test
+      - run: ls -ahl
