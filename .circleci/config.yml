@@ -12,7 +12,6 @@ jobs:
     parallelism: 2
     docker:
       - image: gcc:8.2
-    working_directory: ~/micro-regex-c
     steps:
       - checkout
       - persist_to_workspace:
