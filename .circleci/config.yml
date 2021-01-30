@@ -5,11 +5,10 @@ workflows:
   dist-compile:
     jobs:
       - compile
-
-
-jobs:
-
+      
+jobs: 
   compile:
+    parallelism: 2
     docker:
       - image: gcc:8.2
     working_directory: ~/micro-regex-c
