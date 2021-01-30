@@ -16,4 +16,4 @@ jobs:
       - persist_to_workspace:
           root: output
       - run:
-        command: ls -ahl
+          command: ls -ahl
