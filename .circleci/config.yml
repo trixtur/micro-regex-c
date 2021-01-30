@@ -13,5 +13,6 @@ jobs:
       - image: gcc:8.2
     steps:
       - checkout
-      - run:
-          command: ls -ahl
+      - run: cd tests
+      - run: make
+      - run: make test
