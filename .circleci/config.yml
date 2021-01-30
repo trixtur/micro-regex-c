@@ -6,7 +6,8 @@ workflows:
     jobs:
       - compile
       
-jobs: 
+jobs:
+
   compile:
     parallelism: 2
     docker:
@@ -14,5 +15,7 @@ jobs:
     working_directory: ~/micro-regex-c
     steps:
       - checkout
+      - persist_to_workspace:
+          root: output
       - run:
         command: ls -ahl
