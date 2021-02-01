@@ -9,9 +9,19 @@ int main () {
     char *regex = "\\d\\d!$"; // Match the center of the string.
     int result = 0;
 
+    // Test positive case
     result = match(regex, testText);
     assert(
             result == 1, 
+            "failed"
+    );
+ 
+    // Test negative case
+    testText = "Hello World!";
+    regex = "\\d\\d!$"; // Match the center of the string.
+    result = match(regex, testText);
+    assert(
+            result != 1, 
             "failed"
     );
 
