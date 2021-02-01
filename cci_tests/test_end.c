@@ -6,7 +6,7 @@
 int main () {
     printf ("Running test End: ");
     char *testText = "Hello World42!";
-    char *regex = "42$"; // Match the center of the string.
+    char *regex = "42!$"; // Match the center of the string.
     int result = 0;
 
     result = match(regex, testText);
