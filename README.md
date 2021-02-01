@@ -1,7 +1,6 @@
+# micro-regex-c
 [![trixtur](https://circleci.com/gh/trixtur/micro-regex-c.svg?style=svg)](https://circleci.com/gh/trixtur/micro-regex-c)
 
-
-# micro-regex-c
 ## An extremely basic regex implementation in C
 ### Description
 The drive to build this micro [regex](https://en.wikipedia.org/wiki/Regular_expression) library in C came from a need to have a small portable Regular Expression library for a text based game.
