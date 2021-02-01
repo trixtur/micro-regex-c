@@ -1,3 +1,6 @@
+[![trixtur](https://circleci.com/gh/trixtur/micro-regex-c.svg?style=svg)](https://circleci.com/gh/trixtur/micro-regex-c)
+
+
 # micro-regex-c
 ## An extremely basic regex implementation in C
 ### Description
