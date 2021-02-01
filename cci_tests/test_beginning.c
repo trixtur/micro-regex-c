@@ -16,5 +16,5 @@ int main () {
     );
 
     printf ("passed\n");
-    return 1;
+    return 0;
 }
